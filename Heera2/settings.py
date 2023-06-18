@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+import environ
+
+env=environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,15 +81,10 @@ WSGI_APPLICATION = 'Heera2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 #database connectivity
-
+import dj_database_url
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Heera_db',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST':'localhost',
-    }
+    'default': dj_database_url.parse(env('DATABASE_URL'))
+    
 }
 
 
