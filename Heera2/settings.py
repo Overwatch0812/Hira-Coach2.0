@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4+cp$b9x!974mo+rvp0wph54!ju*$dc5_vsb8=7#%@#f2()+-%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'utilities',
     'contact_us',
+    'storages',
+    'jazzmin',
 ]
 
 MIDDLEWARE = [
@@ -133,7 +135,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static')
 ]
-STATIC_ROOT=os.path.join(BASE_DIR,'assets')
+STATIC_ROOT=os.path.join(BASE_DIR,'Media_files')
 
 
 #registering our custom user model
@@ -144,3 +146,20 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 #redirection after loging out
 LOGOUT_REDIRECT_URL = "/"
+
+#aws config.
+AWS_ACCESS_KEY_ID="AKIA2SNGPCYPH2IQMTGF"
+AWS_SECRET_ACCESS_KEY="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"
+
+AWS_STORAGE_BUCKET_NAME='hira-storage'
+
+DEFAULT_FILE_STORAGE='storages.backends.s3boto3.S3Boto3Storage'
+
+STATICFILES_STORAGE='storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_S3_CUSTOM_DOMAIN='%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+DEFAULT_ACL='public-read'
+
+#admin panel css fixin
+ADMIN_MEDIA_PREFIX = '/static/admin/'
