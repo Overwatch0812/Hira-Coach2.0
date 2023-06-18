@@ -26,3 +26,8 @@ urlpatterns = [
 ]
 
 urlpatterns = urlpatterns+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+from django.contrib import admin
+
+admin.site.site_header = 'Hira Coach Admin Panel'                    
+admin.site.index_title = "Welcome To Hira Coach's Admin Panel"  
