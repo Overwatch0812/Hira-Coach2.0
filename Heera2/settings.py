@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    "whitenoise.runserver_nostatic",
     'django.contrib.staticfiles',
     'utilities',
     'contact_us',
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -134,7 +136,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static')
 ]
-STATIC_ROOT=os.path.join(BASE_DIR,'Media_files')
+STATIC_ROOT=os.path.join(BASE_DIR,'assets')
 
 
 #registering our custom user model
@@ -146,19 +148,6 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 #redirection after loging out
 LOGOUT_REDIRECT_URL = "/"
 
-#aws config.
-AWS_ACCESS_KEY_ID="AKIA2SNGPCYPH2IQMTGF"
-AWS_SECRET_ACCESS_KEY="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"
-
-AWS_STORAGE_BUCKET_NAME='hira-storage'
-
-DEFAULT_FILE_STORAGE='storages.backends.s3boto3.S3Boto3Storage'
-
-STATICFILES_STORAGE='storages.backends.s3boto3.S3Boto3Storage'
-
-AWS_S3_CUSTOM_DOMAIN='%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-
-DEFAULT_ACL='public-read'
 
 #admin panel css fixin
 ADMIN_MEDIA_PREFIX = '/static/admin/'

@@ -27,6 +27,8 @@ urlpatterns = [
 
 urlpatterns = urlpatterns+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
+
+#customising the admin panel
 from django.contrib import admin
 
 admin.site.site_header = 'Hira Coach Admin Panel'                    
