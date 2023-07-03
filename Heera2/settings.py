@@ -42,11 +42,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     "whitenoise.runserver_nostatic",
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'utilities',
     'contact_us',
     'storages',
     'jazzmin',
+    
 ]
+
+CLOUDINARY_STORAGE={
+    'CLOUD_NAME':'dqxe7a5ps',
+    'API_KEY':'362698444365376',
+    'API_SECRET':'DuCdVEH1bAoZ2D_e267XgmyiQkA',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -144,7 +153,8 @@ AUTH_USER_MODEL='utilities.CustomUser'
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
-
+#TO CONNECT CLUDINARY TO UPLOAD OUR FILES
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 #redirection after loging out
 LOGOUT_REDIRECT_URL = "/"
 
